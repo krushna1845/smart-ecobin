@@ -1,0 +1,711 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  background: #eef2f5;
+}
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+  min-height: 100vh;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.topbar {
+  height: 78px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #ddd;
+
+  padding: 0 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.topbar h1 {
+  margin: 0;
+
+  font-size: 25px;
+
+  color: #173b2c;
+}
+
+.topbar p {
+  margin: 4px 0 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.connection {
+  background: #eef9f1;
+
+  color: #237845;
+
+  padding: 10px 16px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+}
+
+.online-dot {
+  display: inline-block;
+
+  width: 9px;
+  height: 9px;
+
+  background: #28a745;
+
+  border-radius: 50%;
+
+  margin-right: 7px;
+}
+
+/* =========================================
+   ALERT
+========================================= */
+
+.alert-box {
+  margin: 15px 25px;
+
+  padding: 14px 18px;
+
+  background: #fff2f2;
+
+  border-left: 5px solid #e53935;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  gap: 13px;
+
+  align-items: center;
+}
+
+.alert-symbol {
+  font-size: 27px;
+}
+
+.alert-box strong {
+  color: #c62828;
+}
+
+.alert-box p {
+  margin: 4px 0;
+}
+
+.alert-box small {
+  color: #777;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    340px;
+
+  gap: 18px;
+
+  padding: 0 25px 25px;
+}
+
+/* =========================================
+   MAP
+========================================= */
+
+.map-card {
+  height: calc(100vh - 125px);
+
+  min-height: 600px;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  background: white;
+
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+}
+
+.map {
+  height: 100%;
+
+  width: 100%;
+}
+
+/* =========================================
+   LEAFLET CUSTOM MARKERS
+========================================= */
+
+.custom-marker {
+  background: transparent;
+
+  border: none;
+}
+
+.office-marker,
+.van-marker {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: white;
+
+  border-radius: 50%;
+
+  font-size: 26px;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bin-marker {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  border: 3px solid white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 21px;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.bin-label {
+  background: white;
+
+  padding: 3px 7px;
+
+  border-radius: 5px;
+
+  margin-top: 2px;
+
+  text-align: center;
+
+  font-size: 10px;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.25);
+
+  white-space: nowrap;
+}
+
+/* =========================================
+   SIDE PANEL
+========================================= */
+
+.side-panel {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+/* =========================================
+   PANEL CARD
+========================================= */
+
+.panel-card {
+  background: white;
+
+  padding: 18px;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.panel-card h2 {
+  margin: 0 0 13px;
+
+  font-size: 17px;
+}
+
+.city-status {
+  color: #27784a;
+
+  font-size: 14px;
+}
+
+.green-dot {
+  display: inline-block;
+
+  width: 9px;
+  height: 9px;
+
+  background: #2ca45a;
+
+  border-radius: 50%;
+
+  margin-right: 7px;
+}
+
+/* =========================================
+   BIN CARDS
+========================================= */
+
+.bin-card {
+  background: white;
+
+  padding: 18px;
+
+  border-radius: 10px;
+
+  border-left: 5px solid #2ca45a;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.bin-card.danger {
+  border-left-color: #e53935;
+
+  background: #fffafa;
+}
+
+.bin-card-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.bin-card-header h3 {
+  margin: 0;
+
+  font-size: 16px;
+}
+
+.bin-card-header span {
+  font-size: 11px;
+
+  color: #888;
+}
+
+.percentage {
+  font-size: 34px;
+
+  font-weight: 700;
+
+  margin: 13px 0 8px;
+}
+
+.progress {
+  height: 9px;
+
+  background: #e3e6e8;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progress div {
+  height: 100%;
+
+  background: #35a968;
+
+  transition:
+    width 0.5s ease;
+}
+
+.bin-card.danger .progress div {
+  background: #e53935;
+}
+
+.bin-card p {
+  font-size: 12px;
+
+  color: #777;
+
+  margin: 10px 0;
+}
+
+.bin-card strong {
+  font-size: 12px;
+
+  color: #287b4c;
+}
+
+.bin-card.danger strong {
+  color: #d32f2f;
+}
+
+/* =========================================
+   COLLECTOR VAN
+========================================= */
+
+.van-wrapper {
+  position: relative;
+
+  width: 110px;
+  height: 75px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-end;
+}
+
+/* =========================================
+   VAN LABEL
+========================================= */
+
+.van-label {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  background: #1f2937;
+
+  color: white;
+
+  padding: 4px 9px;
+
+  border-radius: 7px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.25);
+
+  z-index: 3;
+}
+
+/* =========================================
+   VAN BODY
+========================================= */
+
+.van-body {
+  position: absolute;
+
+  bottom: 10px;
+
+  width: 62px;
+  height: 28px;
+
+  background: #2563eb;
+
+  border-radius:
+    7px 10px 5px 5px;
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.25);
+
+  z-index: 2;
+}
+
+/* =========================================
+   VAN CABIN
+========================================= */
+
+.van-cabin {
+  position: absolute;
+
+  right: -10px;
+  top: 5px;
+
+  width: 25px;
+  height: 21px;
+
+  background: #60a5fa;
+
+  border-radius:
+    4px 7px 3px 3px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 17px;
+}
+
+/* =========================================
+   VAN WHEELS
+========================================= */
+
+.van-body::before,
+.van-body::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -7px;
+
+  width: 14px;
+  height: 14px;
+
+  background: #111827;
+
+  border-radius: 50%;
+
+  border: 2px solid white;
+}
+
+.van-body::before {
+  left: 8px;
+}
+
+.van-body::after {
+  right: 7px;
+}
+
+/* =========================================
+   VAN SHADOW
+========================================= */
+
+.van-shadow {
+  position: absolute;
+
+  bottom: 3px;
+
+  width: 65px;
+  height: 8px;
+
+  background:
+    rgba(0, 0, 0, 0.20);
+
+  border-radius: 50%;
+
+  filter: blur(2px);
+}
+
+/* =========================================
+   MAP MESSAGE
+========================================= */
+
+.map-message {
+  position: absolute;
+
+  top: 15px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 1000;
+
+  background: white;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.2);
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* =========================================
+   ACTION BUTTON
+========================================= */
+
+.action-button {
+  width: 100%;
+
+  border: none;
+
+  background: #2563eb;
+
+  color: white;
+
+  padding: 12px 14px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  margin-top: 8px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.action-button:hover {
+  background: #1d4ed8;
+}
+
+.action-button:active {
+  transform: scale(0.98);
+}
+
+/* =========================================
+   COLLECTING MESSAGE
+========================================= */
+
+.collecting-message {
+  margin-top: 12px;
+
+  padding: 11px;
+
+  background: #eff6ff;
+
+  color: #1d4ed8;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+/* =========================================
+   COMPLETED MESSAGE
+========================================= */
+
+.completed-message {
+  margin-top: 12px;
+
+  padding: 11px;
+
+  background: #eef9f1;
+
+  color: #237845;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+/* =========================================
+   ACTION MESSAGE
+========================================= */
+
+.action-message {
+  margin: 12px 0 0;
+
+  padding: 10px;
+
+  background: #f4f5f6;
+
+  border-radius: 7px;
+
+  color: #555;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   ROUTE INFORMATION
+========================================= */
+
+.route-info {
+  margin-top: 10px;
+
+  padding: 10px;
+
+  background: #f7f8fa;
+
+  border-radius: 7px;
+
+  border-left: 3px solid #2563eb;
+}
+
+.route-info p {
+  margin: 5px 0;
+
+  font-size: 12px;
+
+  color: #555;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .map-card {
+    height: 550px;
+  }
+
+  .topbar {
+    padding: 0 15px;
+  }
+
+  .map-message {
+    max-width: 90%;
+
+    white-space: normal;
+
+    text-align: center;
+  }
+
+}

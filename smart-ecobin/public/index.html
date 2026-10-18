@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Smart EcoBin</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f7;
+            text-align: center;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .bin {
+            background: white;
+            width: 300px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .percentage {
+            font-size: 50px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .bar {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            width: 0%;
+            background: #4caf50;
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .alert {
+            color: red;
+        }
+
+        .normal {
+            color: green;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1>🌱 Smart EcoBin Dashboard</h1>
+
+    <div class="dashboard">
+
+
+        <!-- BIN 1 -->
+
+        <div class="bin">
+
+            <h2>🗑️ Bin 1- DRY WASTE</h2>
+
+            <div id="fill1" class="percentage">
+                0%
+            </div>
+
+            <div class="bar">
+
+                <div id="bar1" class="fill"></div>
+
+            </div>
+
+            <p>
+                Distance:
+                <span id="distance1">0</span> cm
+            </p>
+
+            <div id="status1" class="status">
+                Waiting
+            </div>
+
+        </div>
+
+
+        <!-- BIN 2 -->
+
+        <div class="bin">
+
+            <h2>🗑️ Bin 2-  WET WASTE </h2>
+
+            <div id="fill2" class="percentage">
+                0%
+            </div>
+
+            <div class="bar">
+
+                <div id="bar2" class="fill"></div>
+
+            </div>
+
+            <p>
+                Distance:
+                <span id="distance2">0</span> cm
+            </p>
+
+            <div id="status2" class="status">
+                Waiting
+            </div>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+async function updateDashboard() {
+
+    try {
+
+        const response = await fetch("/api/data");
+
+        const data = await response.json();
+
+
+        // BIN 1
+
+        document.getElementById("fill1").innerText =
+            data.bin1.fill.toFixed(1) + "%";
+
+        document.getElementById("distance1").innerText =
+            data.bin1.distance.toFixed(1);
+
+        document.getElementById("bar1").style.width =
+            data.bin1.fill + "%";
+
+        document.getElementById("status1").innerText =
+            data.bin1.status;
+
+
+        // BIN 2
+
+        document.getElementById("fill2").innerText =
+            data.bin2.fill.toFixed(1) + "%";
+
+        document.getElementById("distance2").innerText =
+            data.bin2.distance.toFixed(1);
+
+        document.getElementById("bar2").style.width =
+            data.bin2.fill + "%";
+
+        document.getElementById("status2").innerText =
+            data.bin2.status;
+
+
+        // Status colors
+
+        document.getElementById("status1").className =
+            "status " +
+            (data.bin1.fill >= 80 ? "alert" : "normal");
+
+        document.getElementById("status2").className =
+            "status " +
+            (data.bin2.fill >= 80 ? "alert" : "normal");
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+}
+
+
+// Update every second
+
+setInterval(updateDashboard, 1000);
+
+updateDashboard();
+
+</script>
+
+
+</body>
+
+</html>
